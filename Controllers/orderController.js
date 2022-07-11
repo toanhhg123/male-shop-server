@@ -1,6 +1,6 @@
 const productModel = require('../Models/ProductModel');
 const userModel = require('../Models/userModel');
-const orderModel = require('../Models/orderModel');
+const orderModel = require('../Models/OrderModel');
 
 const asyncHandler = require('express-async-handler');
 
