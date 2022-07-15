@@ -154,8 +154,17 @@ const updateProfile = asyncHandler(async (req, res) => {
     }
 });
 
-const testProtect = asyncHandler(async (req, res) => {
-    res.json({ message: 'success' });
+const getUserById = asyncHandler(async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        if (!id) throw new Error(`Invalid`);
+        const user = await userModel.findById(id);
+
+        return res.json(user);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
 });
 
 module.exports = {
@@ -163,6 +172,6 @@ module.exports = {
     postLogin,
     refreshToken,
     logOut,
-    testProtect,
+    getUserById,
     updateProfile,
 };

@@ -4,7 +4,7 @@ const {
     postLogin,
     refreshToken,
     logOut,
-    testProtect,
+    getUserById,
     updateProfile,
 } = require('../Controllers/authController');
 const { protect } = require('../middleware/AuthMiddleware');
@@ -14,7 +14,7 @@ router.post('/register', postRegister);
 router.post('/login', postLogin);
 router.post('/refreshtoken', refreshToken);
 router.post('/logout', logOut);
-router.get('/test', protect, testProtect);
+router.get('/get-user/:id', protect, getUserById);
 router.post('/update', updateProfile);
 
 module.exports = router;

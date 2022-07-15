@@ -40,7 +40,19 @@ const findChat = asyncHandler(async (req, res) => {
     }
 });
 
+const findFriendChat = asyncHandler(async (req, res) => {
+    try {
+        const { userId } = req.body;
+        if (!userId) throw new Error('user-id Not provided');
+        const friends = await chatModel.find().where('number').in(userId);
+        return res.json(friends);
+    } catch (error) {
+        return res.status(500).json({ ...error, message: error.message });
+    }
+});
+
 module.exports = {
     createChat,
     findChat,
+    findFriendChat,
 };

@@ -104,3 +104,12 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/chat/find-chat/62d01e7c2a0d28e5acfd3a4a:62d01e7c2a0d28e5acfd3a4b
 Content-Type: application/json
+
+
+###
+POST http://localhost:8080/chat/find-friend
+Content-Type: application/json
+
+{
+    "userId" : "62d01e7c2a0d28e5acfd3a4b"
+}
