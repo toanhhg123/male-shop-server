@@ -9,6 +9,8 @@ const { importUserRouter } = require('./dataImport');
 const userRouter = require('./routes/userRouter');
 const productRouter = require('./routes/ProductRoute');
 const orderRouter = require('./routes/OrderRouter');
+const chatRouter = require('./routes/chatRouter');
+const messageRouter = require('./routes/messageRouter');
 
 connect();
 app.use(cors());
@@ -21,7 +23,8 @@ app.get('/', (req, res) => {
 app.use('/user', userRouter);
 app.use('/products', productRouter);
 app.use('/order', orderRouter);
-
+app.use('/chat', chatRouter);
+app.use('/message', messageRouter);
 app.use('/import', importUserRouter);
 
 app.listen(port, () => {

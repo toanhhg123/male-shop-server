@@ -42,7 +42,7 @@ GET  http://localhost:8080/products/product/62b71b5a182dd126fad29253
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWNlNjA3ODU4OTUxOGRjYTkwNTM3YiIsInVzZXJOYW1lIjoidXNlciIsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsImltYWdlVXJsIjoiaHR0cHM6Ly91cGxvYWQud2lraW1lZGlhLm9yZy93aWtpcGVkaWEvY29tbW9ucy90aHVtYi83LzdjL1VzZXJfZm9udF9hd2Vzb21lLnN2Zy8yMDQ4cHgtVXNlcl9mb250X2F3ZXNvbWUuc3ZnLnBuZyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NTUxMzQzMzcsImV4cCI6MTY1NTEzNDM2N30.lih8HGouZKhGkokaqMq75_pM9McIirKsA_vecme5gc4
 
 ###
-POST  http://localhost:8080/import/user
+POST  http://localhost:8080/import/products
 Content-Type: application/json
 
 {
@@ -54,7 +54,7 @@ Content-Type: application/json
 
 ###
 
-POST  http://localhost:8080/import/user
+POST  http://localhost:8080/import/products
 Content-Type: application/json
 
 
@@ -75,3 +75,32 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmI5NDNiN
     "qty": 10,
     "totailPrice": 1000
 }
+
+###
+POST http://localhost:8080/chat/create-chat
+Content-Type: application/json
+
+{
+    "secondId": "62d01e7c2a0d28e5acfd3a4a",
+    "firstId": "62d01e7c2a0d28e5acfd3a4b"
+}
+
+
+###
+POST http://localhost:8080/message/send-message
+Content-Type: application/json
+
+{
+    "chatId": "62d01e9f2a0d28e5acfd3a57",
+    "senderId": "62d01e7c2a0d28e5acfd3a4b",
+    "text": "me too!"
+}
+
+###
+GET http://localhost:8080/message/get-chats/62d01e9f2a0d28e5acfd3a57
+Content-Type: application/json
+
+
+###
+GET http://localhost:8080/chat/find-chat/62d01e7c2a0d28e5acfd3a4a:62d01e7c2a0d28e5acfd3a4b
+Content-Type: application/json

@@ -6,7 +6,7 @@ const password = process.env.PASSWORD_DB;
 const connect = async () => {
     try {
         const conn = await mongoose.connect(
-            `mongodb+srv://${userName}:${password}@maleshop.romotyj.mongodb.net/maleshop?retryWrites=true&w=majority`
+            `mongodb://localhost:27017/maleshop`
         );
         console.log('connect success: ', conn.connection.host);
     } catch (error) {
