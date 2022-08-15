@@ -29,7 +29,14 @@ const getProducts = asyncHandler(async (req, res) => {
 
 const uploadProduct = asyncHandler(async (req, res) => {
     console.log(req.files);
-    res.json({ imgs: req.files });
+
+    const imgs = req.files.map((file) => {
+        return {
+            ...file,
+            location: 'uploads/' + file.filename,
+        };
+    });
+    res.json({ imgs: imgs });
 });
 
 const getProductParams = asyncHandler(async (req, res) => {
@@ -46,8 +53,13 @@ const getProductParams = asyncHandler(async (req, res) => {
     }
 });
 
+const geturl = (req, res) => {
+    res.send(req.protocol + '://' + req.get('host'));
+};
+
 module.exports = {
     getProducts,
     uploadProduct,
     getProductParams,
+    geturl,
 };

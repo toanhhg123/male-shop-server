@@ -17,6 +17,15 @@ Content-Type: application/json
 }
 
 ###
+GET  http://localhost:8080/user/find-user/?userName=e
+Content-Type: application/json
+
+{
+    "userName": "user",
+    "password": "user"
+}
+
+###
 POST  http://localhost:8080/user/refreshtoken
 Content-Type: application/json
 
@@ -108,6 +117,32 @@ Content-Type: application/json
 
 ###
 POST http://localhost:8080/chat/find-friend
+Content-Type: application/json
+
+{
+    "userId" : "62d01e7c2a0d28e5acfd3a4b"
+}
+
+
+
+###
+GET  http://localhost:8080/admin/users
+Content-Type: application/json
+
+{
+    "userId" : "62d01e7c2a0d28e5acfd3a4b"
+}
+
+###
+GET  http://localhost:8080/admin/products
+Content-Type: application/json
+
+{
+    "userId" : "62d01e7c2a0d28e5acfd3a4b"
+}
+
+###
+GET  http://localhost:8080/admin/url
 Content-Type: application/json
 
 {

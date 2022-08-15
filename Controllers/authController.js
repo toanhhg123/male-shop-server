@@ -64,7 +64,6 @@ const postLogin = asyncHandler(async (req, res) => {
         user.refreshToken = jwt.sign({ ...userInfo }, process.env.JWT_REFRESH);
         user.save();
         const de = jwt.verify(user.refreshToken, process.env.JWT_REFRESH);
-        console.log(de);
         return res.json({
             userInfo: { ...userInfo },
             token: {
@@ -167,6 +166,23 @@ const getUserById = asyncHandler(async (req, res) => {
     }
 });
 
+const getUsersByUserName = asyncHandler(async (req, res) => {
+    try {
+        const limit = req.query.limit || 8;
+        const userName = req.query.userName;
+
+        const searchRegex = new RegExp(userName, 'i');
+
+        const users = await userModel
+            .find({ userName: searchRegex })
+            .limit(limit);
+
+        return res.json(users);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+});
+
 module.exports = {
     postRegister,
     postLogin,
@@ -174,4 +190,5 @@ module.exports = {
     logOut,
     getUserById,
     updateProfile,
+    getUsersByUserName,
 };
